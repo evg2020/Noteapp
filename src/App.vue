@@ -4,6 +4,9 @@
     <TaskList :list="list" @deleteItem="ondeleteItem" @selectedTask = "onSelectedTask"/>
     <TotalTask :total="totalOpenTasks" />
     <TaskDetailsForm :item="selectedItem"/>
+
+
+
   </div>
 </template>
 
@@ -24,13 +27,12 @@ export default {
   },
   data: () => ({
     list: {
-      1:{
-
+      1: {
         task: "Write the letter",
         comment: "write letter to the customer",
         id: 1
       },
-      2:{
+      2: {
         task: "Buy tickets",
         comment: "choose dates and buy tickets",
         id: 2
@@ -39,6 +41,7 @@ export default {
 
     selectedItem:{    }
   }),
+
   computed: {
     totalOpenTasks() {
            return  Object.keys(this.list).length;
@@ -56,6 +59,7 @@ export default {
       }
       this.$set(this.list, newObject.id, newObject);
       console.log(this.list)
+      console.log(data)
 
     },
 

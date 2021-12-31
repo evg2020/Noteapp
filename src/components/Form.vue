@@ -1,20 +1,18 @@
+
 <template>
-<ElCard class ="form-card">
-  <ElForm :model="formdata" ref="addItemForm" :rules="rules" lable-position="botton" >
+  <div class ="form-card">
+    <p>
+      <b-form  :model="formdata" ref="addItemForm" >
+        <b-form-group label="New task:" >
+          <b-form-input class = "mb-3" v-model="formdata.task" placeholder="Enter task" required></b-form-input>
+          <b-form-input class = "mb-3" v-model="formdata.comment" placeholder="task description" required></b-form-input>
+        </b-form-group>
+        <b-button @click="onSubmit" variant="primary" >Submit</b-button>
 
-   <ElFormItem label="Task" prop="task">
-      <el-input v-model="formdata.task"/>
-    </ElFormItem>
-   <ElFormItem label="Comments" prop="comment">
-      <el-input v-model="formdata.comment"/>
-    </ElFormItem>
+      </b-form>
+    </p>
 
-    <ElButton @click="onSubmit" type="primary">Submit</ElButton>
-
-
-
-  </ElForm>
-</ElCard>
+  </div>
 </template>
 
 <script>
@@ -22,39 +20,30 @@ export default{
 
 name: "Form",
 
-data: () => ({
- formdata: {
-   task: "",
-   comment: "",
- },
-
- rules: {
-  comment:[{ required: true, message:"please select", trigger:'change' }],
-  task:[{ required: true, message:"please select", trigger:'change' }]
-},
-
+  data: () => ({
+      formdata: {
+        task: "",
+        comment: "",
+      },
 }),
 
 
-methods: {
-  onSubmit() {
-    // console.log(this.$refs.addItemForm.validate((valid)=>{console.log(valid)}))
-    this.$refs.addItemForm.validate((valid) => {
-      if(valid){
-        this.$emit('newTaskSubmit',{...this.formdata});
-        this.$refs.addItemForm.resetFields();
-      }
-    })
-  },
-},
-
-
-
+  methods: {
+    onSubmit() {
+        if(this.formdata.task && this.formdata.comment){
+            this.$emit("newTaskSubmit", { ...this.formdata });
+            this.formdata.task='';
+            this.formdata.comment='';
+        }
+        console.log(this.formdata.task);
+       }
+ }
 
 }
 </script>
 
 <style scoped>
+
 .form-card{
   max-width: 500px;
   margin:auto;

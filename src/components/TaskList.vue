@@ -1,20 +1,16 @@
+
 <template>
-<div class="task-list-wrap">
-  <ElCard :header ="header">
-    <template v-if ="!isEmpty">
-    <div class="list-item" v-for ="(item, prop) in list" :key ="prop">
-      <span class="task-comment" @click ="getItem(item)">{{item.task}}</span>
-      <span class="task-value">
-      <ElButton   type ="danger" size="mini" @click ="deleteItem(item.id)">delete</ElButton>
-      </span>
-    </div>
-    </template>
-    <ElAlert  v-else type ="info" :title="emptyTitle" />
-  </ElCard>
-
-</div>
-
+  <div class ="task-list-wrap">
+      <b-card   :title="header" tag="article">
+        <div class="list-item " v-for ="(item, prop) in list" :key ="prop">
+          <span class="task-comment " @click ="getItem(item)">{{item.task}}</span>
+         <b-button class = "btn-del" variant="warning" size="sm" @click="deleteItem(item.id)"  >delete</b-button>
+        </div>
+      </b-card>
+  </div>
 </template>
+
+
 
 <script>
 export default{
@@ -22,7 +18,7 @@ export default{
 
   data: () => ({
     header: "Task list",
-    emptyTitle: "Empty List"
+
   }),
 
   props: {
@@ -37,13 +33,15 @@ export default{
     }
   },
   methods: {
+
     deleteItem(id) {
             this.$emit('deleteItem', id);
     },
-  getItem(data) {
-    console.log(data.task)
-    this.$emit('selectedTask', data);
-  }
+
+    getItem(data) {
+      console.log(data.task)
+      this.$emit('selectedTask', data);
+    }
 
     },
 };
@@ -56,16 +54,15 @@ export default{
     padding-top: 50px;
 }
 .list-item{
-  display: flex;
+  display:flex;
   align-items: center;
   padding: 10px 15px;
-
+}
+.task-comment {
+  margin-left: 5px;
+  margin-right:auto;
 }
 
-.task-value{
-  font-weight: bolt;
-  margin-left:auto;
-  margin-right: 20px;
 
-}
+
 </style>

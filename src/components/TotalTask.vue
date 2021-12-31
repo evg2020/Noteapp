@@ -1,7 +1,5 @@
 <template>
-  <div class = "total-task">open tasks: {{total}}
-
-  </div>
+  <div class = "total-task">open tasks: {{total}} </div>
 </template>
 
 <script>

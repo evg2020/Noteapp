@@ -1,16 +1,13 @@
+
 <template>
-<div class="task-list-wrap">
-  <el-card :header="header" >
-  <div class ="list">
-      <p class="task-item">{{item.task}}</p>
-      <p class="comment">{{item.comment}} </p>
-    </div>
-</el-card>
-
-</div>
-
-
+  <div class="task-list-wrap">
+    <b-card   :title="header" tag="article"    class="mb-3" >
+      <p class="comment task-item text-left" >{{item.task}}</p>
+     <p class="comment text-left">{{item.comment}} </p>
+    </b-card>
+  </div>
 </template>
+
 
 <script>
 export default{
@@ -18,7 +15,7 @@ export default{
 
   data: () => ({
     header: "Task details",
-    emptyTitle: "Empty List"
+
   }),
 
   props: {
