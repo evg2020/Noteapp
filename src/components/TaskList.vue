@@ -63,6 +63,7 @@ export default{
 .task-comment {
   margin-left: 5px;
   margin-right:auto;
+  cursor: pointer;
 }
 
 
