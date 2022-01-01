@@ -29,6 +29,8 @@ name: "Form",
 
 
   methods: {
+
+    //  ------------- метод для записи в App
     onSubmit() {
         if(this.formdata.task && this.formdata.comment){
             this.$emit("newTaskSubmit", { ...this.formdata });
@@ -37,9 +39,36 @@ name: "Form",
         }
         console.log(this.formdata.task);
        }
+
+//  ------------- метод для записи на сервер
+      //  async onSubmit ({ ...this.formdata }) {
+      //       try {
+      //           let data  = await axios.post( "http://my-site.com/set-like", {article-id: id});
+
+      //           this.allArticles = this.allArticles.map((art)=> {
+      //               if(art.id == id)
+      //                    art.likesCount += 1;//или от сервера data.likesCount
+
+      //               return art;
+      //           });
+
+      //           if(data.status == 'success'){
+
+      //           } else {
+      //               throw new Error(data.status);
+      //           }
+
+      //       } catch (e) {
+      //           this.error = e;
+      //       }
+      //   },
+
+
+    }
  }
 
-}
+
+
 </script>
 
 <style scoped>
@@ -47,6 +76,7 @@ name: "Form",
 .form-card{
   max-width: 500px;
   margin:auto;
+  margin-bottom: 50px;
 
 }
 

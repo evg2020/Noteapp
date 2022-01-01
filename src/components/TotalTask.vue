@@ -15,9 +15,10 @@ export default{
 </script>
 <style scoped>
 .total-task{
-  padding: 20px;
+  padding: 10px;
   font-size: 20px;
   text-align: center;
+  margin-bottom: 50px;
 
 }
 </style>
