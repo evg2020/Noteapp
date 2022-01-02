@@ -1,46 +1,36 @@
 
-const list =[
-  {
-    task: "Write the letter",
+const list ={
+  1:{
+    task: "Write the letter about ticket",
     comment: "write letter to the customer",
     id: 1
   },
-  {
+  2:{
     task: "Buy tickets",
     comment: "choose dates and buy tickets",
     id: 2
   }
-];
+};
+
 
 
 function getReseachList(str, list){
 const seachedArr = [];
-for(let item of list) {
+for(let item of Object.entries(list)) {
   if(JSON.stringify(item).includes(str)){
     seachedArr.push(item);
   }
 }
-return seachedArr;
+
+return Object.fromEntries(seachedArr);
 }
 
-console.log(getReseachList("wr", list));
+console.log(getReseachList("tic", list));
+console.log(getReseachList("ww", list));
+console.log(getReseachList("write", list));
 
 
 
-
-
-
-if(JSON.stringify(list).includes("rr"))
-{
-console.log(true)
-} else {
-console.log(false)
-}
-
-
-console.log( JSON.stringify(list))
-
-function checkSpam(str, list) {
 
 
 
@@ -57,9 +47,9 @@ console.log(findArr);
   });
   console.log(res);
 
-}
+
 let str = "Buy";
-checkSpam(str, list) ;
+
 
 
 

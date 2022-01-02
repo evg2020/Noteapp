@@ -34,20 +34,20 @@ export default {
 
   },
   data: () => ({
-    list: [
-      {
+    list:{
+      1:{
         task: "Write the letter",
         comment: "write letter to the customer",
         id: 1
       },
-      {
+      2:{
         task: "Buy tickets",
         comment: "choose dates and buy tickets",
         id: 2
       },
-    ],
+    },
 
-    selectedItem:[],
+    selectedItem:{},
 
     reserchList:[],
 
@@ -56,7 +56,7 @@ export default {
 
   computed: {
     totalOpenTasks() {
-     return  this.list.length;
+     return Object.keys(this.list).length;
     }
   },
 
@@ -68,29 +68,36 @@ export default {
   methods: {
 
     ondeleteItem(id){
-      this.list = this.list.filter((item) =>  item.id !== id);
+      this.$delete(this.list, id);
     },
 
 
-    onNewTaskSubmit(data){
-      data.id = String(Math.random());
-      this.list.push(data)
-
+    onNewTaskSubmit(data) {
+      const newObject = { ...data, id: String(Math.random()) };
+      this.$set(this.list, newObject.id, newObject);//добавление  в list по ключу новый обьект
+      console.log(this.list);
     },
 
-    onSelectedTask(item){
+
+    onSelectedTask(item) {
       console.log(item);
-      this.selectedItem = item
+      this.selectedItem = { ...item };
     },
 
-    onSearchValueChanged(data){
+
+    onSearchValueChanged(str){
         const seachedArr = [];
-      for(let item of (this.list)) {
-        if(JSON.stringify(item).includes(data)){
+      for(let item of Object.values(this.list) ) {
+        if(JSON.stringify(item).includes(str)){
         seachedArr.push(item);
        }
       }
-      return this.reserchList= seachedArr;
+
+    console.log(Object.fromEntries(seachedArr))
+
+
+
+      return this.reserchList = seachedArr;
 
     },
 

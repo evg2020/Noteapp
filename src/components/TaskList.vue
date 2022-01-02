@@ -2,7 +2,7 @@
 <template>
   <div class ="task-list-wrap">
       <b-card   :title="header" tag="article">
-        <div class="list-item " v-for ="(item, prop) in ( reserchList.length == 0 ? list :reserchList )" :key ="prop">
+        <div class="list-item " v-for ="(item, prop) in (reserchList.length == 0 ? list :reserchList)" :key ="prop">
           <span class="task-comment " @click ="getItem(item)">{{item.task}}</span>
          <b-button class = "btn-del" variant="warning" size="sm" @click="deleteItem(item.id)"  >delete</b-button>
         </div>
@@ -23,12 +23,12 @@ export default{
 
   props: {
     list : {
-      type: Array,
-      default: () => [],
+      type: Object,
+      default: () => ({}),
     },
     reserchList: {
-      type:Array,
-       default: () => []
+      type: Array,
+       default: () => ([])
 
     }
   },
