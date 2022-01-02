@@ -49,7 +49,7 @@ export default {
 
     selectedItem:{},
 
-    reserchList:[],
+    reserchList:{},
 
 
   }),
@@ -87,17 +87,13 @@ export default {
 
     onSearchValueChanged(str){
         const seachedArr = [];
-      for(let item of Object.values(this.list) ) {
+      for(let item of Object.entries(this.list) ) {
         if(JSON.stringify(item).includes(str)){
         seachedArr.push(item);
        }
       }
 
-    console.log(Object.fromEntries(seachedArr))
-
-
-
-      return this.reserchList = seachedArr;
+      return this.reserchList = Object.fromEntries(seachedArr);
 
     },
 
