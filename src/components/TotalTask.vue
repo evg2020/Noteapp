@@ -4,7 +4,9 @@
 
 <script>
 export default{
+
   name: 'TotalTask',
+
   props: {
     total: {
       type: Number,
@@ -13,7 +15,9 @@ export default{
   }
 }
 </script>
+
 <style scoped>
+
 .total-task{
   padding: 10px;
   font-size: 20px;
@@ -21,4 +25,5 @@ export default{
   margin-bottom: 50px;
 
 }
+
 </style>

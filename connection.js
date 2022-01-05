@@ -12,4 +12,4 @@ mongo.connect(
 
     client.close();
   }
-)
+);
