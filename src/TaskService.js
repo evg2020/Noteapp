@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'http://localhost:5000/api/posts/';
+const url = 'http://localhost:5000/api/tasks/';
 
 class TaskService {
  // get posts
@@ -10,7 +10,7 @@ class TaskService {
        const data = res.data;
        data.map((task) => ({
            ...task,
-           createdAt: new Date(task.createdAt),
+           createdAt: new Date(task.createdAt()),
        }));
    } catch (err) {
        return err;
